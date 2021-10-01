@@ -7,8 +7,14 @@ import { doesUsernameExists } from "../services/firebase";
 const signup = () => {
   const history = useHistory();
 
-  const { auth, createUserWithEmailAndPassword, updateProfile, addDoc, db } =
-    useContext(FirebaseContext);
+  const {
+    auth,
+    createUserWithEmailAndPassword,
+    updateProfile,
+    addDoc,
+    db,
+    collection,
+  } = useContext(FirebaseContext);
 
   const [username, setUsername] = useState("");
   const [fullName, setFullName] = useState("");

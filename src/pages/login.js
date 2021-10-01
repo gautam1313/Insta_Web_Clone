@@ -6,7 +6,7 @@ import * as ROUTES from "../constants/routes";
 const login = () => {
   const history = useHistory();
 
-  const { firebase } = useContext(FirebaseContext);
+  const { auth, signInWithEmailAndPassword } = useContext(FirebaseContext);
 
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
@@ -18,7 +18,7 @@ const login = () => {
   const handleLogin = async (event) => {
     event.preventDefault();
     try {
-      await firebase.auth().signInWithEmailAndPassword(emailAddress, password);
+      await signInWithEmailAndPassword(auth, emailAddress, password);
       history.replace(ROUTES.DASHBOARD);
     } catch (error) {
       setEmailAddress("");
@@ -57,6 +57,7 @@ const login = () => {
               onChange={({ target }) => {
                 setEmailAddress(target.value);
               }}
+              value={emailAddress}
             />
             <input
               type="password"
@@ -66,6 +67,7 @@ const login = () => {
               onChange={({ target }) => {
                 setPassword(target.value);
               }}
+              value={password}
             />
             <button
               disabled={invalid}

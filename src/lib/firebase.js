@@ -1,6 +1,18 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-import "firebase/auth";
+import {
+  getFirestore,
+  collection,
+  query,
+  where,
+  getDocs,
+  addDoc,
+} from "firebase/firestore";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
 
 // import { seedDatabase } from "../seed";
 
@@ -14,10 +26,23 @@ const firebaseConfig = {
 };
 
 const firebase = initializeApp(firebaseConfig);
-const { FieldValue } = getFirestore();
+const db = getFirestore();
+const auth = getAuth();
 // const db = getFirestore();
 console.log(firebase);
 // console.log(db);
 // seedDatabase(db);
 
-export { firebase, FieldValue }; //FieldValue
+export {
+  firebase,
+  auth,
+  signInWithEmailAndPassword,
+  collection,
+  query,
+  where,
+  getDocs,
+  db,
+  createUserWithEmailAndPassword,
+  updateProfile,
+  addDoc,
+};

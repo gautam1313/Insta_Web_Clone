@@ -3,34 +3,24 @@ import "./styles/index.css";
 import ReactDOM from "react-dom";
 import App from "./App";
 import FirebaseContext from "./context/firebase";
-import {
-  firebase,
-  auth,
-  signInWithEmailAndPassword,
-  collection,
-  query,
-  where,
-  getDocs,
-  db,
-  createUserWithEmailAndPassword,
-  updateProfile,
-  addDoc,
-} from "./lib/firebase"; //FieldValue
+import { firebaseHelpers } from "./lib/firebase"; //FieldValue
 
 ReactDOM.render(
   <FirebaseContext.Provider
     value={{
-      firebase,
-      auth,
-      signInWithEmailAndPassword,
-      collection,
-      query,
-      where,
-      getDocs,
-      db,
-      createUserWithEmailAndPassword,
-      updateProfile,
-      addDoc,
+      firebase: firebaseHelpers.firebase,
+      auth: firebaseHelpers.auth,
+      signInWithEmailAndPassword: firebaseHelpers.signInWithEmailAndPassword,
+      collection: firebaseHelpers.collection,
+      query: firebaseHelpers.query,
+      where: firebaseHelpers.where,
+      getDocs: firebaseHelpers.getDocs,
+      db: firebaseHelpers.db,
+      createUserWithEmailAndPassword:
+        firebaseHelpers.createUserWithEmailAndPassword,
+      updateProfile: firebaseHelpers.updateProfile,
+      addDoc: firebaseHelpers.addDoc,
+      onAuthStateChanged: firebaseHelpers.onAuthStateChanged,
     }}
   >
     <App />

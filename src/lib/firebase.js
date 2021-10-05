@@ -12,6 +12,7 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   updateProfile,
+  onAuthStateChanged,
 } from "firebase/auth";
 
 // import { seedDatabase } from "../seed";
@@ -29,11 +30,10 @@ const firebase = initializeApp(firebaseConfig);
 const db = getFirestore();
 const auth = getAuth();
 // const db = getFirestore();
-console.log(firebase);
+// console.log(firebase);
 // console.log(db);
 // seedDatabase(db);
-
-export {
+const firebaseHelpers = {
   firebase,
   auth,
   signInWithEmailAndPassword,
@@ -45,4 +45,6 @@ export {
   createUserWithEmailAndPassword,
   updateProfile,
   addDoc,
+  onAuthStateChanged,
 };
+export { firebaseHelpers };

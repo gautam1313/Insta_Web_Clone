@@ -13,6 +13,7 @@ import {
   createUserWithEmailAndPassword,
   updateProfile,
   onAuthStateChanged,
+  signOut,
 } from "firebase/auth";
 
 // import { seedDatabase } from "../seed";
@@ -46,5 +47,6 @@ const firebaseHelpers = {
   updateProfile,
   addDoc,
   onAuthStateChanged,
+  signOut,
 };
 export { firebaseHelpers };

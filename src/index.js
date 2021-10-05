@@ -21,6 +21,7 @@ ReactDOM.render(
       updateProfile: firebaseHelpers.updateProfile,
       addDoc: firebaseHelpers.addDoc,
       onAuthStateChanged: firebaseHelpers.onAuthStateChanged,
+      signOut: firebaseHelpers.signOut,
     }}
   >
     <App />

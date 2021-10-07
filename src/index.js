@@ -1,3 +1,4 @@
+import "./wdyr";
 import React from "react";
 import "./styles/index.css";
 import ReactDOM from "react-dom";
@@ -22,6 +23,7 @@ ReactDOM.render(
       addDoc: firebaseHelpers.addDoc,
       onAuthStateChanged: firebaseHelpers.onAuthStateChanged,
       signOut: firebaseHelpers.signOut,
+      limit: firebaseHelpers.limit,
     }}
   >
     <App />

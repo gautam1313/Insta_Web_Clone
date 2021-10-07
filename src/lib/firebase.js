@@ -6,6 +6,7 @@ import {
   where,
   getDocs,
   addDoc,
+  limit,
 } from "firebase/firestore";
 import {
   getAuth,
@@ -48,5 +49,6 @@ const firebaseHelpers = {
   addDoc,
   onAuthStateChanged,
   signOut,
+  limit,
 };
 export { firebaseHelpers };

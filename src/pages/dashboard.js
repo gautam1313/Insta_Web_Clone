@@ -8,7 +8,7 @@ const dashboard = () => {
     document.title = "Instagram";
   }, []);
   return (
-    <div className="bg-gray-primary">
+    <div className="">
       <Header />
       <div className="grid grid-cols-3 gap-4 mx-auto max-w-screen-lg justify-between">
         <Timeline />

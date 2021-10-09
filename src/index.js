@@ -24,6 +24,10 @@ ReactDOM.render(
       onAuthStateChanged: firebaseHelpers.onAuthStateChanged,
       signOut: firebaseHelpers.signOut,
       limit: firebaseHelpers.limit,
+      doc: firebaseHelpers.doc,
+      updateDoc: firebaseHelpers.updateDoc,
+      arrayUnion: firebaseHelpers.arrayUnion,
+      arrayRemove: firebaseHelpers.arrayRemove,
     }}
   >
     <App />

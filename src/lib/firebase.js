@@ -7,6 +7,10 @@ import {
   getDocs,
   addDoc,
   limit,
+  doc,
+  updateDoc,
+  arrayUnion,
+  arrayRemove,
 } from "firebase/firestore";
 import {
   getAuth,
@@ -50,5 +54,9 @@ const firebaseHelpers = {
   onAuthStateChanged,
   signOut,
   limit,
+  doc,
+  updateDoc,
+  arrayUnion,
+  arrayRemove,
 };
 export { firebaseHelpers };

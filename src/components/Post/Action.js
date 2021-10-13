@@ -57,6 +57,12 @@ const Action = ({ docId, totalLikes, likedPhoto, handleFocus }) => {
             />
           </svg>
           <svg
+            onClick={handleFocus}
+            onKeyDown={(event) => {
+              if (event.key === "Enter") {
+                handleFocus();
+              }
+            }}
             xmlns="http://www.w3.org/2000/svg"
             className="w-8 select-none cursor-pointer text-black-light"
             fill="none"

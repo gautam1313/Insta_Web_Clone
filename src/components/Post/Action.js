@@ -10,8 +10,6 @@ const Action = ({ docId, totalLikes, likedPhoto, handleFocus }) => {
   const { db, doc, updateDoc, arrayUnion, arrayRemove } =
     useContext(FirebaseContext);
 
-  console.log("User ", userId);
-
   const handleToggleLiked = async () => {
     setToggleLiked((toggleLiked) => !toggleLiked);
 

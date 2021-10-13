@@ -18,6 +18,15 @@ export const doesUsernameExists = async (username) => {
   return result.docs.length > 0;
 };
 
+export const getUserByUsername = async (username) => {
+  const q = query(collection(db, "users"), where("username", "==", username));
+  const result = await getDocs(q);
+  return result.docs.map((item) => ({
+    ...item.data(),
+    docId: item.id,
+  }));
+};
+
 export const getUserById = async (userId) => {
   const q = query(collection(db, "users"), where("userId", "==", userId));
   const result = await getDocs(q);

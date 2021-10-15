@@ -40,7 +40,6 @@ const signup = () => {
           emailAddress,
           password
         );
-        console.log(createdUser);
 
         await updateProfile(createdUser.user, {
           displayName: username,

@@ -9,7 +9,7 @@ import Comments from "./Comments";
 const Post = ({ content }) => {
   const commentInput = useRef(null);
   const handleFocus = () => commentInput.current.focus();
-  console.log(content);
+
   return (
     <div className="bg-white mb-12 border border-gray-primary rounded col-span-4">
       <Header username={content.username} />

@@ -109,3 +109,32 @@ export const getPhotos = async (userId, following) => {
 
   return photosWithUserDetails;
 };
+
+export const getUserPhotosByUsername = async (username) => {
+  const [{ userId }] = await getUserByUsername(username);
+
+  const q = query(collection(db, "photos"), where("userId", "==", userId));
+  const result = await getDocs(q);
+  return result.docs.map((item) => ({
+    ...item.data(),
+    docId: item.id,
+  }));
+};
+
+export const isUserFollowingProfile = async (
+  loggedInUsername,
+  profileUserId
+) => {
+  const q = query(
+    collection(db, "users"),
+    where("username", "==", loggedInUsername),
+    where("following", "array-contains", profileUserId)
+  );
+  const results = await getDocs(q);
+  const [response = {}] = results.docs.map((item) => ({
+    ...item.data(),
+    docId: item.id,
+  }));
+  console.log("response ", response);
+  return response.username ? true : false;
+};

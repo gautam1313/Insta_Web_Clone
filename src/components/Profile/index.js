@@ -34,9 +34,9 @@ const Profile = ({ user }) => {
     <>
       <Header
         photosCount={photosCollection ? photosCollection.length : 0}
-        profile={profile}
         followerCount={followerCount}
         setFollowerCount={dispatch}
+        profile={profile}
       />
       <Photos photos={photosCollection} />
     </>

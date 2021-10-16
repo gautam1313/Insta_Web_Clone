@@ -57,6 +57,11 @@ const Header = ({
               type="button"
               className="bg-blue-medium text-white rounded text-sm font-bold w-20 h-8"
               onClick={handleToggleFollow}
+              onKeyDown={(event) => {
+                if (event.key === "Enter") {
+                  handleToggleFollow();
+                }
+              }}
             >
               {isFollowingProfile ? "Unfollow" : "Follow"}
             </button>

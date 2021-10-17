@@ -135,6 +135,6 @@ export const isUserFollowingProfile = async (
     ...item.data(),
     docId: item.id,
   }));
-  console.log("response ", response);
+
   return response.username ? true : false;
 };

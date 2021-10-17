@@ -2,7 +2,11 @@ import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Skeleton from "react-loading-skeleton";
 import useUser from "../../hooks/use-user";
-import { isUserFollowingProfile } from "../../services/firebase";
+import {
+  isUserFollowingProfile,
+  updateLoggedInUserFollowing,
+  updateFollowedUserFollowers,
+} from "../../services/firebase";
 
 const Header = ({
   photosCount,
@@ -12,17 +16,31 @@ const Header = ({
     docId: profileDocId,
     userId: profileUserId,
     fullName,
+    followers = [],
     following = [],
     username: profileUsername,
   },
 }) => {
   const { user } = useUser();
-  console.log("user ", user);
   const [isFollowingProfile, setIsFollowingProfile] = useState(false);
   const activeBtnFollow = user?.username && user?.username !== profileUsername;
 
-  const handleToggleFollow = () => {
-    return 1;
+  const handleToggleFollow = async () => {
+    setIsFollowingProfile((isFollowingProfile) => !isFollowingProfile);
+    setFollowerCount({
+      followerCount: isFollowingProfile ? followerCount - 1 : followerCount + 1,
+    });
+
+    await updateFollowedUserFollowers(
+      profileDocId,
+      user.userId,
+      isFollowingProfile
+    );
+    await updateLoggedInUserFollowing(
+      user.docId,
+      profileUserId,
+      isFollowingProfile
+    );
   };
 
   useEffect(() => {
@@ -31,7 +49,7 @@ const Header = ({
         user.username,
         profileUserId
       );
-      console.log("isFollowing ", isFollowing);
+
       setIsFollowingProfile(isFollowing);
     };
 
@@ -67,6 +85,31 @@ const Header = ({
             </button>
           )}
         </div>
+        <div className="mt-4 container flex">
+          {followers === undefined || following === undefined ? (
+            <Skeleton count={1} width={677} height={24} />
+          ) : (
+            <>
+              <p className="mr-10">
+                <span className="font-bold">{photosCount}</span>
+                {` `}photos
+              </p>
+              <p className="mr-10">
+                <span className="font-bold">{followerCount}</span>
+                {` ${followerCount === 1 ? "follower" : "followers"}`}
+              </p>
+              <p className="mr-10">
+                <span className="font-bold">{following.length}</span>
+                {` `}following
+              </p>
+            </>
+          )}
+        </div>
+        <div className="mt-4 container">
+          <p className="font-medium">
+            {!fullName ? <Skeleton count={1} heigth={24} /> : fullName}
+          </p>
+        </div>
       </div>
     </div>
   );
@@ -80,6 +123,7 @@ Header.propTypes = {
     docId: PropTypes.string,
     userId: PropTypes.string,
     fullName: PropTypes.string,
+    followers: PropTypes.array,
     following: PropTypes.array,
     username: PropTypes.string,
   }).isRequired,

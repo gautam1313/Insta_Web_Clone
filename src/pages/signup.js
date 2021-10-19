@@ -64,6 +64,7 @@ const signup = () => {
         setError(error.message);
       }
     } else {
+      setUsername("");
       setError("Username exists. Try another.");
     }
   };

@@ -24,12 +24,12 @@ import {
 // import { seedDatabase } from "../seed";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDi1oAnKURTJxBYdSRvLdeis6v9FOlVxo8",
-  authDomain: "insta2-70270.firebaseapp.com",
-  projectId: "insta2-70270",
-  storageBucket: "insta2-70270.appspot.com",
-  messagingSenderId: "1013058461212",
-  appId: "1:1013058461212:web:584a82085577c1a55089d9",
+  apiKey: process.env.REACT_APP_APIKEY,
+  authDomain: process.env.REACT_APP_AUTHDOMAIN,
+  projectId: process.env.REACT_APP_PROJECTID,
+  storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
+  appId: process.env.REACT_APP_APPID,
 };
 
 const firebase = initializeApp(firebaseConfig);

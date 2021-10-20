@@ -21,8 +21,6 @@ import {
   signOut,
 } from "firebase/auth";
 
-// import { seedDatabase } from "../seed";
-
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_APIKEY,
   authDomain: process.env.REACT_APP_AUTHDOMAIN,
@@ -35,10 +33,7 @@ const firebaseConfig = {
 const firebase = initializeApp(firebaseConfig);
 const db = getFirestore();
 const auth = getAuth();
-// const db = getFirestore();
-// console.log(firebase);
-// console.log(db);
-// seedDatabase(db);
+
 const firebaseHelpers = {
   firebase,
   auth,
